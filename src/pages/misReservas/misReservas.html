@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title text-center>
+      Mis reservas
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item-divider color="aceptada">Aceptadas</ion-item-divider>
+    <div *ngFor="let obj of reservas">
+      <ion-item *ngIf="obj.estado==='aceptada'">
+        <div item-start>
+          <h2>{{obj.fecha}}</h2>
+          <p text-center>{{obj.hora}}</p>
+        </div>
+        <h2 text-center>{{obj.nomReserva}}</h2>
+        <p text-center>Mesa: {{obj.mesa}}</p>
+        <div item-end>
+          <button ion-button clear icon-only (click)="cancelarReserva(obj)">
+            <ion-icon name='trash'></ion-icon>
+          </button>
+        </div>
+      </ion-item>
+    </div>
+    <ion-item-divider color="pendiente">Pendientes</ion-item-divider>
+    <div *ngFor="let obj of reservas">
+      <ion-item *ngIf="obj.estado==='pendiente'">
+        <div item-start>
+          <h2>{{obj.fecha}}</h2>
+          <p text-center>{{obj.hora}}</p>
+        </div>
+        <h2 text-center>{{obj.nomReserva}}</h2>
+        <p text-center>Mesa: {{obj.mesa}}</p>
+        <div item-end>
+            <button ion-button clear icon-only (click)="editarReserva(obj)">
+                <ion-icon name='md-create'></ion-icon>
+              </button>
+          <button ion-button clear icon-only (click)="cancelarReserva(obj)">
+            <ion-icon name='trash'></ion-icon>
+          </button>
+        </div>
+      </ion-item>
+    </div>
+    <ion-item-divider color="rechazada">Rechazadas</ion-item-divider>
+    <div *ngFor="let obj of reservas">
+      <ion-item *ngIf="obj.estado==='rechazada'">
+        <div item-start>
+          <h2>{{obj.fecha}}</h2>
+          <p text-center>{{obj.hora}}</p>
+        </div>
+        <h2 text-center>{{obj.nomReserva}}</h2>
+        <p text-center>Mesa: {{obj.mesa}}</p>
+        <div item-end>
+          <button ion-button clear icon-only (click)="eliminarReserva()">
+            <ion-icon name='trash'></ion-icon>
+          </button>
+        </div>
+      </ion-item>
+    </div>
+
+  </ion-list>
+
+
+
+  <!-- <ion-list>
+    <ion-list-header color="primary">
+      Aceptadas
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let obj of reservas">
+      <ion-item>
+        {{obj.nomReserva}}
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="eliminarReserva(obj)">
+          <ion-icon name="md-trash"></ion-icon>
+          Eliminar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list> -->
+</ion-content>
